@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
@@ -173,6 +173,19 @@ public static class JwtBearerExtensions
         StrictJwtOptions? strictOptions = null)
     {
         return handler.ValidateStrict(token, validationParams, strictOptions, out _);
+    }
+
+    /// <summary>
+    /// Validates a JWT token string with strict Base64url checks,
+    /// returning the decoded claims principal and validated token.
+    /// </summary>
+    public static ClaimsPrincipal ValidateStrict(
+        this JwtSecurityTokenHandler handler,
+        string token,
+        TokenValidationParameters validationParams,
+        out SecurityToken validatedToken)
+    {
+        return handler.ValidateStrict(token, validationParams, null, out validatedToken);
     }
 
     /// <summary>
