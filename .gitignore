@@ -1,4 +1,14 @@
-/bin
-/Extensions
-/Middleware
-/obj
+## Build results
+[Bb]in/
+[Oo]bj/
+
+## Visual Studio & IDE
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## NuGet packages (build outputs)
+*.nupkg
+*.snupkg
